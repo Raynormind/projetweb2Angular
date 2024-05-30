@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="https://jakarta.ee/xml/ns/jakartaee"
+      xmlns:jsp="http://java.sun.com/JSP/Page" lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Gestion des demandes d'ami</title>
+
+    <link rel="stylesheet" th:href="@{/css/styleRaf.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+<header class="bannière">
+
+    <div class="lingoRingo">
+        <a th:href="@{/forumsPrivilege}">
+            <img id="logoRingo" th:src="@{/logoRingo.png}" alt="Lingo Ringo">
+        </a>
+    </div>
+
+    <div class="optionsBannière">
+        <div><img class="imgEntete" th:src="@{'/utilisateurs/' + ${session.photo_profile}}" alt="Photo de profil"></div>
+        <div><span id="entetee" th:if="${session}!=null" class="text-white text-center">[[${session['nomUtilisateur']}]]</span></div>
+        <div><a id="entetee" th:href="@{'/utilisateurs/edit/' + ${session.id}}">Profil</a></div><!--faire un profil privi et le controller -->
+        <div><a id="entetee" th:href="@{/deconnexion}">Se Déconnecter</a></div>
+    </div>
+</header>
+
+
+<div><a id="entetee" th:href="@{/pageAjoutAmisPrivilege}">Rechercher/Ajouter amis</a></div>
+<div><a id="entetee" th:href="@{/gestionFavoris}">Favoris</a></div>
+<div><a id="entetee" th:href="@{/gestionAmisPrivilege}"> Gestion amis  </a></div>
+
+<br>
+<div
+        th:if="${message!=null}"  style="background-color: #2c854b; color: white; font-weight: bold; padding: 30px; width: 90%; margin: auto;">
+    [[${message}]]
+</div>
+<br>
+
+<div class="table-raf">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nom d'utilisateur</th>
+            <th>Nom</th>
+            <th>Langue</th>
+            <th>Intérêts</th>
+
+        </tr>
+
+
+
+        <tr th:each="ami : ${listDemandesAmis}">
+            <td th:text="${ami.id_utilisateur2.id}"></td>
+            <td th:text="${ami.id_utilisateur2.nomUtilisateur}"></td>
+            <td th:text="${ami.id_utilisateur2.nom}">  </td>
+            <td th:text="${ami.id_utilisateur2.langue}">  </td>
+            <td th:text="${ami.id_utilisateur2.interets_culturels}">  </td>
+
+
+        </tr>
+
+    </table>
+</div>
+
+
+<div class="mod_et_supp">
+    <h2 class="h2-raf">Que voulez-vous faire?</h2>
+
+    <div>
+
+        <c th:each="ami : ${listDemandesAmis}">
+            <article class = "utilisateur">
+                <ul>
+
+                    <li th:text="${ami.id_utilisateur2.nomUtilisateur}"> </li>
+                    <li th:text="${ami.id_utilisateur2.nom}">  </li>
+                    <li> </li>
+
+                </ul>
+                <form th:action="@{/accepterPrivilege/ami}" method="post">
+                    <div      id="" title="">
+                        <input hidden="hidden" type="text" name="id_utilisateur2" th:value="${ami.id_utilisateur2.id}" readonly style="width: 100px; background-color: #333; color: #fff;" />
+                    </div>
+                    <input  type="submit" name="operation" id="myButton" value="Accepter" />
+                </form>
+                <form th:action="@{/refuserPrivilege/ami}" method="post">
+                    <div      id="" title="">
+                        <input hidden="hidden" type="text" name="id_utilisateur2" th:value="${ami.id_utilisateur2.id}" readonly style="width: 100px; background-color: #333; color: #fff;"  />
+                    </div>
+                    <input type="submit" name="operation" id="myButton" value="Refuser" />
+                </form>
+            </article>
+        </c>
+    </div>
+
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <span>Collège de Rosemont - Équipe 7</span>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

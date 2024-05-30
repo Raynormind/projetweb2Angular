@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styleRaf.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
+    <title>PageInscription</title>
+</head>
+
+<body>
+<header class="bannière">
+
+    <div class="lingoRingo">
+        <a th:href="@{/forumsMembre}">
+            <img id="logoRingo" th:src="@{/logoRingo.png}" alt="Lingo Ringo">
+        </a>
+    </div>
+
+    <div class="optionsBannière">
+        <div><img class="imgEntete" th:src="@{'/utilisateurs/' + ${session.photo_profile}}" alt="Photo de profil"></div>
+        <div><span id="entetee" th:if="${session}!=null" class="text-white text-center">[[${session['nomUtilisateur']}]]</span></div>
+        <div><a id="entetee" th:href="@{/gestionAmisPrivilege}">Amis  </a></div>
+        <div><a id="entetee" th:href="@{'/utilisateursPrivilege/edit/' + ${session.id}}">Profil</a></div>
+        <div><a id="entetee" th:href="@{/deconnexion}">Deconnexion</a></div>
+    </div>
+</header>
+
+<h2 class="titrePageProfil">[[${pageTitle}]]</h2>
+
+<div class="conteneurPrincipale">
+    <form th:action="@{/utilisateursPrivilege/modifier}" method="post" th:object="${utilisateur}">
+        <div  class="InscriptionUtilisateur">
+            <div>
+                <div class="labelInscriptionColonne">
+
+                    <br>
+                    <br>
+                    <span>Non Utilisateur :</span>
+                    <input type="text" id="nomUtilisateur" name="nomUtilisateur" th:value="${utilisateur.nomUtilisateur}" required>
+                    <br>
+                    <br>
+                    <br>
+                    <span>Non :</span>
+                    <input type="text" id="nom" name="nom" th:value="${utilisateur.nom}" placeholder="Modifie ton nom" required>
+
+                    <br>
+                    <br>
+                    <br>
+
+                    <span>Langue :</span>
+                    <select name="langue" id="language-select">
+                        <option value="Francais">Français</option>
+                        <option value="Anglais">Anglais</option>
+                        <option value="Espagnol">Espagnol</option>
+                        <option value="Japonais">Japonais</option>
+                        <option value="Allemand">Allemand</option>
+                        <option value="Portugais">Portugais</option>
+                        <option value="Italien">Italien</option>
+                    </select>
+                    <br>
+                    <br>
+                    <br>
+
+                    <span>Interet Culturel :</span>
+                    <select name="interetsCulturels" id="interets">
+                        <option value="Apprentissages et connaissances">Apprentissages et connaissances</option>
+                        <option value="Automobile et mécanique">Automobile et mécanique</option>
+                        <option value="Animaux et insectes">Animaux et insectes</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Japanimation">Japanimation</option>
+                        <option value="Arts et Lettres">Arts et Lettres</option>
+                        <option value="K-pop">K-pop</option>
+                        <option value="Musique">Musique</option>
+                        <option value="Religion et spiritualite">Religion et spiritualite</option>
+                    </select>
+                    <br>
+                    <br>
+                    <br>
+
+                    <span>Mot de Passe :</span>
+                    <input type="password" id="motdepasse" name="motdepasse" th:value="${utilisateur.mot_de_passe}" >
+                    <br>
+                    <br>
+                    <br>
+
+                    <span>Email :</span>
+                    <input type="email" id="email" name="email" th:value="${utilisateur.email}">
+                    <br>
+                    <br>
+                    <br>
+
+                    <input style="margin-left: 40%;" type="file" id="fileImg" name="photoProfile" th:value="${utilisateur.photo_profile}">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <button class="btnRecherche" type="submit">Modifier le Profil</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+</div>
+
+</div>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <span>Collège de Rosemont - Équipe 7</span>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

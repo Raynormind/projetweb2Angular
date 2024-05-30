@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Forum</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var successMessage = /*[[${successMessage}]]*/ 'null';
+    var errorMessage = /*[[${errorMessage}]]*/ 'null';
+
+    window.onload = function() {
+        if (successMessage !== 'null' && successMessage) {
+            alert('Succès: ' + successMessage);
+        }
+        if (errorMessage !== 'null' && errorMessage) {
+            alert('Erreur: ' + errorMessage);
+        }
+    }
+    /*]]>*/
+</script>
+
+<header class="bannière">
+    <div class="lingoRingo">
+        <a th:href="@{/forumsController}">
+            <img id="logoRingo" th:src="@{/logoRingo.png}" alt="Lingo Ringo">
+        </a>
+    </div>
+    <div class="optionsBannière">
+        <div><a id="entetee" th:href="@{/forums}">Accès invité</a></div>
+        <div><a id="entetee" th:href="@{/connexion}">Se Connecter</a></div>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Ajouter un nouveau forum</h1>
+    <form th:action="@{/forums/add}" th:object="${forum}" method="post">
+        <div class="form-group">
+            <label for="nomForum">Nom du Forum:</label>
+            <input type="text" id="nomForum" th:field="*{titre_forum}" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="langueForum">Langue du Forum:</label>
+            <select id="langueForum" th:field="*{langue}" required="required">
+                <option value="Francais">Français</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Espagnol">Espagnol</option>
+                <option value="Japonais">Japonais</option>
+                <option value="Allemand">Allemand</option>
+                <option value="Portugais">Portugais</option>
+                <option value="Italien">Italien</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="interetForum">Intérêt Culturel:</label>
+            <select id="interetForum" th:field="*{interets_culturels}" required="required">
+                <option value="Apprentissages et connaissances">Apprentissages et connaissances</option>
+                <option value="Automobile et mécanique">Automobile et mécanique</option>
+                <option value="Animaux et insectes">Animaux et insectes</option>
+                <option value="Sports">Sports</option>
+                <option value="Japanimation">Japanimation</option>
+                <option value="Arts et Lettres">Arts et Lettres</option>
+                <option value="K-pop">K-pop</option>
+                <option value="Musique">Musique</option>
+                <option value="Religion et spiritualite">Religion et spiritualite</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="button">Ajouter le Forum</button>
+        </div>
+    </form>
+    <div class="form-group">
+        <button type="button" class="button" th:onclick="'window.location.href=\'' + @{/forums} + '\''">Retourner dans la liste des forums</button>
+    </div>
+
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <span>Collège de Rosemont - Équipe 7</span>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

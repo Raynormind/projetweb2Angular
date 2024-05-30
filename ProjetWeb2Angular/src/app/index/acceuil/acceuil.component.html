@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+  <title>Bienvenue</title>
+</head>
+<body id="bienvenu_background">
+<header class="bannière">
+  <div class="lingoRingo">
+    <a routerLink="/forumsController">
+      <img id="logoRingo" src="/assets/images/logoRingo.png" alt="Lingo Ringo">
+    </a>
+  </div>
+  <div class="optionsBannière">
+    <div><a id="entetee" routerLink="/acceuil">Accès invité</a></div>
+    <div><a id="entetee" routerLink="/users/new">S'inscrire</a></div>
+    <div><a id="entetee" routerLink="/connexion">Se Connecter</a></div>
+  </div>
+</header>
+
+<div class="entete">
+  <h1 style="text-align: center; margin-top: 5%; font-size: 75px; color: white;font-family: 'Zen Dots';">Accueil</h1>
+</div>
+<div>
+  <h3 style="text-align:center; margin-top: 3%;color: white; font-size: 30px;margin-right: 0%; margin-bottom: 1%;font-family: 'Zen Dots';">Forums Publiques</h3>
+</div>
+<div>
+  <h3 style="text-align:center; margin-top: 3%;color: white; font-size: 20px;margin-right: 0%; margin-bottom: 1%;font-family: 'Zen Dots';">Connectez-vous pour rejoindre les forums et discuter avec des gens du monde entier</h3>
+</div>
+<div class="ConteneurForums">
+  <div class="Forums">
+    <div class="InformationsForums">
+      <div *ngIf="listForums.length > 0">
+        <div *ngFor="let forum of listForums" class="labelForums" style="margin-bottom:5px">
+          <br><label class="unForom" for="labelNomForum" id="labelNomForum">Nom du forum : <span>{{ forum.titreForum }}</span></label>
+          <br><label class="unForom" for="langueForum" id="langueForum">Langue du forum : <span>{{ forum.langue }}</span></label>
+          <br><label class="unForom" for="labelInteret" id="labelInteret">Intérêt du forum : <span>{{ forum.interetsCulturels }}</span></label>
+        </div>
+      </div>
+      <div *ngIf="listForums.length === 0">
+        <h2>Aucun Forum Disponible</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-content">
+    <span>Collège de Rosemont - Équipe 7</span>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</footer>

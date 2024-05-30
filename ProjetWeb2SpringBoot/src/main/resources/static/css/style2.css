@@ -1,0 +1,331 @@
+/*Pages specifiques*/
+/*bienvenu*/
+.icon-green {color: green}
+
+.icon-red {color: rgb(179,0,0)}
+
+
+
+.utilisateur a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+a{
+    color: black;
+}
+
+/* On mouse-over */
+.utilisateur a:hover, .dropdown-btn:hover {
+    background-color: #c0cccc;
+}
+
+.icon-hover-pointer{
+    cursor: pointer;
+}
+
+.active {
+    background-color: #848d8d;
+}
+
+.dropdown-container {
+    display: none;
+    background-color: #9fa9a9;
+    padding-left: 8px;
+}
+
+.image-upload>input {
+    display: none;
+}
+.image-upload>label:hover {
+    cursor: pointer;
+}
+
+
+/*General*/
+body {
+    padding:0;
+    margin:0;
+    background: #303134;
+
+}
+
+
+#bienvenu_background {
+    background-image: url(images/fond_ecran_bienvenu.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+}
+
+#bienvenu_text{
+    float: right;
+    color: white;
+    text-align: right;
+    font-size: 30px;
+    font-family: Zen Dots;
+    margin-top: 260px;
+    margin-right: 100px;
+    font-weight: bolder;
+}
+
+#logoRingo{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+
+#france{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+#japan{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+#spain{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+#england{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px
+}
+
+#entetee{
+    color: white;
+    font-family: Zen Dots;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.footerPageBienvenue{
+    margin-left: 65%;
+    margin-top: 35%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+
+}
+
+
+
+
+
+.header{
+    width: auto;
+    height: 160px;
+    background: #10232A;
+    color: white;
+}
+
+.bannière {
+    width: auto;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F1F1F;
+    /* Add your additional styling here (background, padding, etc.) */
+}
+
+.bannière > a {
+    text-decoration: none;
+}
+
+.optionsBannière {
+    display: flex;
+}
+
+.optionsBannière div {
+    padding: 30px;
+    font-size: 15px;
+    color: white;
+    font-family: Zen Dots;
+    font-size: 30px;
+
+}
+
+.lingoRingo{
+    margin-left: 15px;
+    color: white;
+    font-family: "Irish Grover", system-ui;
+;
+    font-size: 64px;
+    margin-left: 60px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+h1{
+    font-size: 100px;
+    text-align: center;
+    color: white;
+    font-family: Zen Dots;
+    margin-top: 0px;
+    margin-bottom: 40px
+}
+h2{
+    font-size: 75px;
+    text-align: left;
+    color: black;
+    font-family: Zen Dots;
+    margin-top: 0px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+
+/*Banner*/
+img{
+
+    border-radius: 75px;
+}
+.banner {
+    width: auto;
+    height: 160px;
+    background: #10232A;
+    color: white;
+}
+.lingoRingo{
+    width: 361px;
+    font-family: Irish Glover;
+    font-size: 64px;
+    line-height: 150px;
+    float: left;
+    margin-left: 50px;
+}
+.accesInvite{
+    width: 361px;
+    font-family: Zen Dots;
+    font-size: 40px;
+    line-height: 150px;
+    float: right;
+}
+.sInscrire{
+    width: 361px;
+    font-family: Zen Dots;
+    font-size: 40px;
+    line-height: 150px;
+    float: right;
+}
+.seConnecter{
+    width: 361px;
+    font-family: Zen Dots;
+    font-size: 40px;
+    line-height: 150px;
+    float: right;
+}
+.upper_bar{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: auto;
+    height: 60px;
+    background: #D9D9D980;
+}
+.lower_bar{
+    position: fixed;
+    bottom: 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: auto;
+    height: 60px;
+    background: #D9D9D980;
+}
+.conteneur_principal {
+    min-height: 800px;
+    display: grid;
+    grid-template-columns: 300px auto 300px;
+}
+
+.zone_gauche {
+    margin: 20px;
+    padding-top: 10px;
+}
+
+.zone_gauche > div{
+    border-radius: 10px;
+    background-color: azure;
+
+    padding: 20px 20px 20px 20px;
+}
+/* ------------ Zone centrale --------------------------------------- */
+.zone_centre {
+    background-position: center center;
+    padding: 10px;
+
+}
+.zone_centre > div {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    background-color: azure;
+}
+
+.zone_centre > div > div {
+    align-content: flex-start;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    background-color: #c0cdce;
+}
+
+.zone_centre > div > span {
+    align-content: flex-end;
+    border: 5px black solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    background-color: gray;
+}
+
+#texte_message{
+    width: 90%;
+    height: 100%;
+}
+
+input[type="text"]{
+    border: unset;
+    &:focus {
+        outline: 0;
+    }
+}
+
+/* ------------ Zone de droite  ------------------------------------- */
+.zone_droite {
+    margin: 20px;
+    padding-top: 10px;
+}
+
+.zone_droite > div {
+    background-color: azure;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+}
+/* ------------ emoji  ------------------------------------- */
+
+
+
+

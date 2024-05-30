@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Forum</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var successMessage = /*[[${successMessage}]]*/ 'null';
+    var errorMessage = /*[[${errorMessage}]]*/ 'null';
+
+    window.onload = function() {
+        if (successMessage !== 'null' && successMessage) {
+            alert('Succès: ' + successMessage);
+        }
+        if (errorMessage !== 'null' && errorMessage) {
+            alert('Erreur: ' + errorMessage);
+        }
+    }
+    /*]]>*/
+</script>
+
+<header class="bannière">
+    <div class="lingoRingo">
+        <a th:href="@{/forumsAdmin}">
+            <img id="logoRingo" th:src="@{/logoRingo.png}" alt="Lingo Ringo">
+        </a>
+    </div>
+    <div class="optionsBannière">
+        <div><img class="imgEntete" th:src="@{'/utilisateurs/' + ${session.photo_profile}}" alt="Photo de profil"></div>
+        <div><a id="entetee" th:href="@{/}">Gerer Utilisateurs</a></div>
+        <div><a id="entetee" th:href="@{/deconnexion}">Deconnexion</a></div>
+    </div>
+</header>
+
+<div class="container">
+    <div th:if="${message}">
+        <div class="alert alert-success" th:text="${message}"></div>
+    </div>
+    <div th:if="${errorMessage}">
+        <div class="alert alert-danger" th:text="${errorMessage}"></div>
+    </div>
+
+    <h1>Ajouter un nouveau forum</h1>
+    <form th:action="@{/forumsAdmin/add}" th:object="${forum}" method="post" onsubmit="return checkForumUnique(this);">
+        <div class="form-group">
+            <label for="nomForum">Nom du Forum:</label>
+            <input type="text" id="nomForum" th:field="*{titre_forum}" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="langueForum">Langue du Forum:</label>
+            <select id="langueForum" th:field="*{langue}" required="required">
+                <option value="Francais">Français</option>
+                <option value="Anglais">Anglais</option>
+                <option value="Espagnol">Espagnol</option>
+                <option value="Japonais">Japonais</option>
+                <option value="Allemand">Allemand</option>
+                <option value="Portugais">Portugais</option>
+                <option value="Italien">Italien</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="interetForum">Intérêt Culturel:</label>
+            <select id="interetForum" th:field="*{interets_culturels}" required="required">
+                <option value="Apprentissages et connaissances">Apprentissages et connaissances</option>
+                <option value="Automobile et mécanique">Automobile et mécanique</option>
+                <option value="Animaux et insectes">Animaux et insectes</option>
+                <option value="Sports">Sports</option>
+                <option value="Japanimation">Japanimation</option>
+                <option value="Arts et Lettres">Arts et Lettres</option>
+                <option value="K-pop">K-pop</option>
+                <option value="Musique">Musique</option>
+                <option value="Religion et spiritualite">Religion et spiritualite</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="button">Ajouter le Forum</button>
+        </div>
+    </form>
+    <div class="form-group">
+        <button type="button" class="button" th:onclick="'window.location.href=\'' + @{/forumsAdmin} + '\''">Retourner dans la liste des forums</button>
+    </div>
+
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <span>Collège de Rosemont - Équipe 7</span>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="titre_forumModal" tabindex="-1" role="dialog" aria-labelledby="titre_forumModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titre_forumModalLabel">Avertissement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalMessage">
+                <!--  -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    function checkForumUnique(form) {
+        $.ajax({
+            type: 'POST',
+            url: '/forums/check_titre_forum', // le rest controller
+            data: {
+                titre_forum: $("#nomForum").val(), // Utilisation du sélecteur jQuery pour récupérer la valeur du champ de titre du forum
+                id: $("#id").val() // Assurez-vous que le champ d'ID existe dans votre formulaire
+            },
+            success: function(data) {
+                if (data === 'OK') {
+                    form.submit();
+                } else {
+                    alert("Il y a déjà un forum avec le même nom : " + $("#nomForum").val()); // Utilisation du sélecteur jQuery pour récupérer la valeur du champ de titre du forum
+                }
+            }
+        });
+        return false; // pour empêcher la soumission du formulaire
+    }
+
+
+    function showModalDialog(message) {
+        $("#titre_forumModalLabel").text("Avertissement");
+        $("#modalMessage").text(message);
+        $("#titre_forumModal").modal('show');
+    }
+
+    $("#buttonCancel").on("click", function () {
+        //L'objet window.location peut être utilisé pour obtenir l'adresse de la page actuelle (URL)
+        // et pour rediriger le navigateur vers une nouvelle page
+        window.location = "[[@{/ajouteForumAdmin}]]";
+    });
+
+</script>
+</body>
+</html>

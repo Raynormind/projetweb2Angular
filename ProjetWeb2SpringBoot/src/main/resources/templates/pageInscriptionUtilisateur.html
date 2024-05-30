@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styleRaf.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+    <title>PageInscription</title>
+</head>
+
+<body>
+<header class="bannière">
+
+    <div class="lingoRingo">
+        <a th:href="@{/forums}">
+            <img id="logoRingo" th:src="@{/logoRingo.png}" alt="Lingo Ringo">
+        </a>
+    </div>
+
+    <div class="optionsBannière">
+        <div><a id="entetee" th:href="@{/forums}">Accès invité</a></div>
+        <div><a id="entetee" th:href="@{/connexion}">Se Connecter</a></div>
+    </div>
+</header>
+
+<div class="conteneurPrincipale">
+    <div th:if="${message}">
+        <div class="alert alert-success" th:text="${message}"></div>
+    </div>
+    <div th:if="${errorMessage}">
+        <div class="alert alert-danger" th:text="${errorMessage}"></div>
+    </div>
+
+    <form th:action="@{/users/add}" method="post" th:object="${utilisateur}" onsubmit="return checkEmailUnique(this);">
+        <div class="InscriptionUtilisateur">
+            <div>
+
+                <div class="inputInscriptionColonne">
+
+
+                    <span>Nom d'utilisateur : </span>
+                    <input type="text" id="nomUtilisateur" name="nomUtilisateur" placeholder="Ex : MaryiaT" th:field="*{nomUtilisateur}" required>
+                    <br>
+                    <br>
+                    <span>Nom : </span>
+                    <input type="text" id="nom" name="nom" placeholder=" Mariya Takeushi" th:field="*{nom}" required>
+                    <br>
+                    <br>
+                    <span>Langue : </span>
+                    <select name="languages" id="language-select" th:field="*{langue}">
+                        <option value="Francais">Français</option>
+                        <option value="Anglais">Anglais</option>
+                        <option value="Espagnol">Espagnol</option>
+                        <option value="Japonais">Japonais</option>
+                        <option value="Allemand">Allemand</option>
+                        <option value="Portugais">Portugais</option>
+                        <option value="Italien">Italien</option>
+                    </select>
+                    <br>
+                    <br>
+
+                    <span>Interet Culturelle : </span>
+                    <select name="interets" id="interets" th:field="*{interets_culturels}">
+                        <option value="Apprentissages et connaissances">Apprentissages et connaissances</option>
+                        <option value="Automobile et mécanique">Automobile et mécanique</option>
+                        <option value="Animaux et insectes">Animaux et insectes</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Japanimation">Japanimation</option>
+                        <option value="Arts et Lettres">Arts et Lettres</option>
+                        <option value="K-pop">K-pop</option>
+                        <option value="Musique">Musique</option>
+                        <option value="Religion et spiritualite">Religion et spiritualite</option>
+                    </select>
+                    <br>
+
+                    <span>Role de l'utilisateur : </span>
+                    <select  class="form-control" required th:field="*{roles}">
+                        <th:block th:each="role : ${listRoles}">
+                            <option th:text="${role.nom}" th:value="${role.id}" ></option>
+                        </th:block>
+                    </select>
+
+
+
+                    <br>
+                    <br>
+
+                    <span>Mot de passe : </span>
+                    <input type="password" id="motdepasse" name="motdepasse" placeholder="********" th:field="*{mot_de_passe}" required>
+                    <br>
+                    <br>
+
+                    <span>Email : </span>
+                    <input type="email" id="email" name="email" placeholder="maryatakeushi@gmail.com" th:field="*{email}" required>
+                    <br>
+                    <br>
+
+
+                    <input style="margin-left: 40%;" type="file" id="fileImg" th:field="*{photo}" >
+
+
+                    <br>
+                    <span for="actif">Cliquer ici pour activer votre compte</span>
+                    <input type="checkbox" id="oui" name="actif" value="oui" th:field="*{actif}" required>
+                    <br>
+                    <input type="submit" value="Creer  nouveau compte"></div>
+            </div>
+        </div>
+</div>
+
+<!--<div class="BouttonEnvoyer"> <input type="submit" value="CrÃ©er compte"></div>-->
+</form>
+</div>
+
+</div>
+
+</div>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <span>Collège de Rosemont - Équipe 7</span>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emailModalLabel">Avertissement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalMessage">
+                <!--  -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    function checkEmailUnique(form) {
+
+        $.ajax({
+            type: 'POST',
+            url: '/utilisateurs/check_email', // le rest controller
+            data: {
+                email: $("#email").val(),
+                id: $("#id").val()
+            },
+            success: function(data) {
+                if (data === 'OK') {
+                    form.submit();
+                } else {
+                    alert("Il y a déjà un utilisateur avec le même email : " + $("#email").val());
+                }
+            }
+        });
+        return false; // c pour empecher la soumission du formulaire
+    }
+
+    function showModalDialog(message) {
+        $("#emailModalLabel").text("Avertissement");
+        $("#modalMessage").text(message);
+        $("#emailModal").modal('show');
+    }
+
+    $("#buttonCancel").on("click", function () {
+        //L'objet window.location peut être utilisé pour obtenir l'adresse de la page actuelle (URL)
+        // et pour rediriger le navigateur vers une nouvelle page
+        window.location = "[[@{/connexion}]]";
+    });
+
+</script>
+
+</body>
+</html>

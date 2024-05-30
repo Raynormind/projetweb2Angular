@@ -1,0 +1,630 @@
+body {
+    padding:0;
+    margin:0;
+    background: #303134;
+
+}
+
+
+#bienvenu_background {
+    background-image: url(images/fond_ecran_bienvenu.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+}
+
+#bienvenu_text{
+    float: right;
+    color: white;
+    text-align: right;
+    font-size: 20px;
+    font-family: Zen Dots;
+    margin-top: 260px;
+    margin-right: 100px;
+    font-weight: bolder;
+}
+
+#logoRingo{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+
+#france{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+#japan{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+#spain{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px;
+}
+#england{
+    width: 100px;
+    height: 100px;
+    float: right;
+    margin: 20px
+}
+
+#entetee{
+    color: white;
+    font-family: Zen Dots;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footerPageBienvenue{
+    margin-left: 65%;
+    margin-top: 35%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.alertMessage{
+    color: red;
+    background-color: antiquewhite;
+}
+
+
+.imgEntete{
+    width: 60px;
+    height: 60px;
+}
+
+.imgUsersAdmin{
+    width: 60px;
+    height: 60px;
+}
+
+
+.header{
+    width: auto;
+    height: 160px;
+    background: #10232A;
+    color: white;
+}
+
+.bannière {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F1F1F;
+}
+
+.bannière > a {
+    text-decoration: none;
+}
+
+
+
+.optionsBannière{  /* voir avec Nass la menace*/
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px;
+    font-size: 10px;
+    color: white;
+    font-family: Zen Dots;
+    font-size: 30px;
+    width: 800px;
+    margin-top: 35px;
+
+}
+
+.lingoRingo{
+    margin-left: 15px;
+    color: white;
+    font-family: "Irish Grover", system-ui;
+;
+    font-size: 64px;
+    margin-left: 60px;
+}
+
+.texteMonProfile{
+    font-size: 65px;
+    margin-top: 4%;
+    margin-left: 18%;
+    font-weight: bolder;
+    margin-bottom: -50px;
+}
+
+.informationUtilisateur {
+    display: flex; /* Active Flexbox pour le conteneur */
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: aliceblue;
+    border-radius: 5px;
+    height: 500px;
+}
+
+.information-utilisateur {
+    flex: 0 0 60%; /* Prend 60% de l'espace disponible, flex-basis est 60% */
+    background-color: aliceblue;
+    display: flex;
+    border-radius: 5px;
+    padding: 50px;
+
+}
+.labelColonne{
+    flex: 0 0 50%;
+}
+
+.inputColonne{
+    flex: 0 0 50%;
+}
+
+
+
+.photoUtilisateur {
+    flex: 0 0 40%; /* Prend le reste de l'espace, soit 40% */
+    background-color: aliceblue;
+    border-radius: 9px;
+}
+
+label {
+    font-size: 23px;
+    font-weight: bolder;
+    margin-right: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+    padding-top: 25px;
+}
+input{
+    width: 200px;
+    border-radius: 5px;
+}
+
+.BouttonEnvoyer input[type="submit"] {
+    background-color: #4CAF50;
+    font-weight: bolder;
+    font-size: 5px;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 46%;
+    margin-top: 3%;
+    margin-bottom: 10%;
+}
+
+.BouttonEnvoyer input[type="submit"]:hover {
+    background-color: #45a049; /* Couleur de fond du bouton au survol */
+}
+
+img{
+    margin-left: 20%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    border-radius: 75px;
+}
+
+.importFile{
+    margin-left: 40%;
+}
+.pied {
+    width: auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d9d9d9;
+    padding: 10px;
+    /* Add your additional styling here (background, padding, etc.) */
+}
+
+.producteur {
+    color: black;
+    font-size: 25px;
+}
+
+.production {
+    padding: 30px;
+    font-size: 15px;
+    color: black;
+    font-family: Zen Dots;
+    font-size: 30px;
+    margin-right: 5px;
+}
+.production > div{
+    margin-right: 5px;
+}
+
+.inscrireTexte{
+    font-size: 65px;
+    margin-top: 4%;
+    margin-left: 43%;
+    font-weight: bolder;
+    margin-bottom: -50px;
+    color: white;
+}
+
+.InscriptionUtilisateur{
+    background-color: #d9d9d9;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 30px;
+    height:500px;
+    border-radius: 9px;
+    font-family: Zen Dots;
+    font-size: 10px;
+}
+.inscription-utilisateur{
+    display: flex;
+}
+
+.labelInscriptionColonne{
+    flex: 0 0 50%;
+}
+
+.inputInscriptionColonne{
+    flex: 0 0 50%;
+}
+
+
+
+
+
+.InscriptionUtilisateur > input{
+    font-size: 67px;
+}
+
+
+.searchBar{
+    width: 400px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.ConnexionUtilisateur{
+    background-color: white;
+    height: 200px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 4%;
+    padding-top: 130px;
+    padding-bottom: 30px;
+}
+
+.connexion-utilisateur {
+    margin: auto;
+    margin-top: 250px;
+    border-radius: 5px;
+    width: 400px;
+    padding: 20px;
+    background-color: #1F1F1F;
+    /*box-shadow: #dedede 0px 48px 100px 0px;*/
+}
+
+.emailCo{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 15px;
+
+}
+
+.mdpCo{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 15px;
+}
+
+.seSouvenir{
+    margin-left: 100px;
+    width: 300px;
+    margin-top: 15px;
+}
+
+.seSouvenir > input{
+    margin: 0px;
+    width: 13px;
+    height: 13px;
+}
+
+.seSouvenir > label{
+    font-size: 13px;
+    font-weight: normal;
+    color: #cccccc;
+}
+
+.btnConnexion{
+    margin-top: 30px;
+    margin-left: 150px;
+    border-radius: 5px;
+}
+
+.btnConnexion:hover{
+    background-color: #10232a;
+    color: #cccccc;
+}
+
+.btnRecherche:hover{
+    background-color: #10232a;
+    color: #cccccc;
+}
+
+.labelConnexionColonne{
+    flex: 0 0 50%;
+}
+
+.inputsConnexionColonne{
+    flex: 0 0 50%;
+}
+
+.button-container {
+    display: flex; /* Utilise Flexbox pour l'alignement */
+    flex-direction: column; /* Alignement vertical des éléments */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    margin: 0;
+    padding: 0;
+}
+
+/* Style des boutons */
+.button {
+    margin: 5px; /* Marge autour des boutons */
+    padding: 10px; /* Espacement interne du bouton */
+    width: 1000px; /* Largeur fixe pour tous les boutons */
+}
+
+
+
+/*---------------------------------------------------------------------------------------------------------------*/
+
+/*Tu peux set les couleurs comme tu le souhaite,je les ai laissé pour que tu puisses voir comment j'ai structuré tout ça*/
+
+
+.ConteneurForums{
+    /*background-color: white; *//*À modifier*/
+    height: 1000px;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom : 5px;
+    display: flex;
+    flex-direction: column;
+    /*flex-wrap: wrap;*/
+
+
+}
+
+.Forums{
+    margin-left:10% ;
+    margin-top: 2%;
+    padding-top: 2%;
+    display: flex;
+    /*background-color: black;*/
+    height: 100px;
+    width: 80%;
+    /*margin: 10%;*/
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+
+
+}
+
+.InformationsForums{
+    /*background-color: red;*/
+    border-radius: 30px;
+}
+
+
+
+.textForumsCaché{
+    flex: 0 0 40%;
+    background-color: green;
+    border-radius: 30px;
+}
+
+.textForumsCaché > input{
+    background-color: #10232a;
+}
+
+.textForumsCaché > textarea{
+    background-color: #10232A;
+}
+
+.ForumAjouter{
+    flex: 0 0 50%;
+    height: 50px;
+    background-color: blueviolet;
+    margin-top: 20%;
+}
+
+.ForumSupprimer{
+    background-color: lightcoral;
+    flex: 0 0 50%;
+    height: 50px;
+    margin-top: 20%;
+}
+.ActionsForums{
+    display: flex;
+    flex: 0 0 30%;
+    background-color: blue;
+    border-radius: 30px;
+}
+
+.link-delete {
+    color: red;
+    margin-right: 10px; /* Ajouter un écart à droite */
+}
+
+.icon-spacing {
+    margin-right: 10px; /* Ajouter un écart entre les icônes */
+}
+
+
+/*Note qu'il suffit seulement de jouer avec les couleurs pour lui donner l'aspect que tu veux*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+.features {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #303134;
+    font-family: Zen Dots;
+    color: #ffffff;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.feature-card {
+    width: 30%;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background: #303134;
+}
+
+.feature-card i {
+    font-size: 40px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .feature-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .feature-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+.footer {
+    background-color: #1F1F1F;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.content{
+    height: 800px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    font-family: Zen Dots;
+    font-size: 12px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 24px; /* Adjust icon size as needed */
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #3498DB; /* Change color on hover */
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .social-icons {
+        margin-top: 10px;
+    }
+}
+
+.unForom{
+    margin-top: 15px;
+    height: 5px;
+}
+
+.labelForums{
+
+    background-color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px; /* Ajout de padding pour l'espacement */
+    margin-bottom: 5px;
+    font-family: Zen Dots;
+    margin-top: 5px;
+
+}
+.labelForums > label{
+
+
+}
+
+.unForom{
+    font-size: 12px;
+    width: auto;
+    margin-top: 5px;
+}
+
+.iconSuppEtAcceder{
+    margin-left: 85%;
+    font-size: 25px;
+}
+
+.titrePageProfil{
+    margin-left: 30%;
+    font-family: Zen Dots;
+    color: #cccccc;
+
+}
+
+.alertConnexioune{
+    color: red;
+    font-family: Zen Dots;
+}
+
+.tableauAmi{
+    height: 10px;
+}
+
+.container{
+    font-family: Zen Dots;
+    color: #cccccc;
+    margin-top: 150px;
+    margin-left: 150px;
+    font-size: 14px;
+}
+
+.container > h1{
+
+    margin-bottom: 70px;
+}
+
+

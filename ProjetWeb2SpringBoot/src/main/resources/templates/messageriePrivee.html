@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap-utilities.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap-utilities.min.css" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style2.css}"/>
+    <script type="text/javascript">
+        function getfile(){
+            document.getElementById('hiddenfile').click();
+            document.getElementById('selectedfile').value=document.getElementById('hiddenfile').value
+        }
+    </script>
+
+
+    <title>Message Privé</title>
+</head>
+<body>
+<header class="bannière">
+
+
+        <a href="#" onclick="history.go(-1);">
+            <img id="logoRingo" th:src="@{/logoRingo.png}" alt="Lingo Ringo">
+        </a>
+
+
+    <div class="optionsBannière">
+        <div><span id="entetee" th:if="${session}!=null" class="text-white text-center">[[${session['nomUtilisateur']}]]</span></div>
+        <div><a id="entetee" th:href="@{/editProfil}">Profil</a></div>
+        <div><a id="entetee" th:href="@{/deconnexion}">Se Déconnecter</a></div>
+    </div>
+</header>
+<div class="conteneur_principal">
+    <div class="zone_gauche">
+        <div>
+            <h3>Forums</h3>
+            <div th:each="forums : ${listForums}">
+                <a th:href="'/forums/' + ${forums.id_forum}" title="Entrer dans le forum"><h4 th:text="${forums.titre_forum}"></h4></a>
+                <p>/[[${forums.titre_forum}]]/[[${forums.interets_culturels}]]</p>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="zone_centre">
+        <div>
+            <div class="messageUtilisateur" th:each="msg : ${listMessages}">
+                <div>
+                    <h4>[[${msg.destinateur_id.nomUtilisateur}]]</h4>
+                </div>
+
+                <img th:if="${msg.document} != ''" th:src="@{'fichierMessage/' + ${msg.document}}">
+                <p>[[${msg.texte_messages}]]</p>
+            </div>
+            <div class="ecrireMessage" th:if="${session}!=null">
+                <div>
+                    <form th:action="@{'/messageriePrivee/send/' + ${destinateur_id}+'/'+${destinataire_id}}" method="post"
+                          enctype="multipart/form-data"
+                          th:object="${messageDestinataire}">
+                        <div>
+                            <div class="form-group form-control">
+                                <input id="texte_message" type="text" class=" btn-default" placeholder="Entrer votre message" th:field="*{texte_messages}">
+                                <label for="fileImage" class="fa-solid fa-paperclip"></label>
+                                <button type="submit" value="EnregistrerMsgPrivee" class="btn btn-default fa-regular fa-paper-plane"></button>
+                                <div class="image-upload">
+                                    <input type="file" id="fileImage" name="fileImage">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="dropdown" id="div1">
+                        <button onclick="return myFunction()" class="dropdown-btn">&#x1F609</button>
+                        <ul id="myDropdown" class="dropdown-container">
+                            <li>&#x1F609</li>
+                            <li>&#x1F601</li>
+                            <li>&#x1F603</li>
+                            <li>&#x1F605</li>
+                        </ul>
+                    </div>
+                    <script>
+                        emojis = document.getElementById("myDropdown").getElementsByTagName("li")
+
+                        for (var i = 0; i < emojis.length; i++) {
+                            emojis[i].addEventListener("click", function() {
+                                var smiley = this.innerHTML;
+                                ins2pos(smiley, 'texte_message');
+                            });
+                        }
+
+                        function ins2pos(str, id) {
+                            var TextArea = document.getElementById(id);
+                            var val = TextArea.value;
+                            var before = val.substring(0, TextArea.selectionStart);
+                            var after = val.substring(TextArea.selectionEnd, val.length);
+
+                            TextArea.value = before + str + after;
+                            setCursor(TextArea, before.length + str.length);
+
+                        }
+
+                        function setCursor(elem, pos) {
+                            if (elem.setSelectionRange) {
+                                elem.focus();
+                                elem.setSelectionRange(pos, pos);
+                            } else if (elem.createTextRange) {
+                                var range = elem.createTextRange();
+                                range.collapse(true);
+                                range.moveEnd('character', pos);
+                                range.moveStart('character', pos);
+                                range.select();
+                            }
+                        }
+
+                        function myFunction() {
+                            document.getElementById("myDropdown").classList.toggle("show");
+                        }
+
+                        // Close the dropdown menu if the user clicks outside of it
+                        window.onclick = function(event) {
+                            if (!event.target.matches('.dropbtn') && !event.target.matches('#myDropdown li')) {
+
+                                var dropdowns = document.getElementsByClassName("dropdown-content");
+                                for (var i = 0; i < dropdowns.length; i++) {
+                                    var openDropdown = dropdowns[i];
+                                    if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
+                                    }
+                                }
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zone_droite">
+        <div>
+            <h3>Utilisateurs</h3>
+            <div th:each="user : ${listUtilisateurs}">
+                <div class="utilisateur" th:if="${destinateur_id != user.id}">
+                    <button class="dropdown-btn">
+                        <img alt="user image" th:src="@{'/utilisateurs/' + ${user.photo}}" height="42" width="50" />
+                        [[${user.nomUtilisateur}]]
+                        <p th:if="${user.roles} == 'privilege'" class="privilege">Membre privilège</p>
+                    </button>
+                    <div class="dropdown-container">
+                        <a th:href="@{'/messageriePrivee/' + ${session.utilisateurConnecte.id} + '/' + ${user.id}}">Écrire un message privé</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+</body>
+</html>
